@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col col-lg-10 offset-lg-1">
+
+          <div class="row pt-3">
+
+            <div class="col-12 col-sm-6 col-md-6 col-lg-12">
+                <h4 class="text-uppercase text-color">EDIT ITEM</h4>
+            </div>
+            <hr>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-12">
+              <div class="card p-2">
+                  <form>
+                      <div class="form-group">
+                          <input type="number" class="form-control mb-2"  [(ngModel)]="newTodo.quantity" name="quantity" placeholder="Input Your Item quantity"/>
+                          <input type="text" class="form-control mb-2" [(ngModel)]="newTodo.label" name="label" id="label" placeholder="Input your label here" />
+                          <button type="button" class="btn btn-success me-2" (click)="updateTodo(newTodo)" >Save</button>
+                          <button type="button" class="btn btn-danger" (click)="cancelTodo(newTodo)" >Cancel</button>
+                      </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+    </div>
+</div>
+

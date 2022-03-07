@@ -1,0 +1,146 @@
+<div class="container">
+
+
+  <div class="row pt-3">
+    <div class="col-12 col-lg-10 offset-lg-1">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-0">
+        <div class="col-12">
+          <h4 class="text-uppercase text-color">{{title}}</h4>
+        </div>
+      </div>
+      <hr>
+
+      <form class="row" >
+        <div class="col-12 col-sm-6 col-md-6 col-lg-1 mb-2 pe-0">
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="newTodo.quantity"
+            name="quantity"
+          />
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-6 col-lg-5 mb-2">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="newTodo.label"
+            name="label"
+            id="label"
+            placeholder=" Add Item "
+          />
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+
+          <button
+            type="button"
+            class="btn btn-success me-2 shadow-none"
+            (click)="addTodo(newTodo)">
+            <i class="fa-solid fa-plus"></i>
+             Add
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-danger shadow-none"
+            (click)="multipleDelete()"
+            *ngIf="isChecked == true"
+          >
+            <i class="fa-solid fa-pencil"></i>
+            Bulk Delete
+          </button>
+
+        </div>
+      </form>
+
+      <div class="col-12 mt-3">
+        <table class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th>
+                <input class="form-check-input shadow-none" type="checkbox" (change)="onBulkSelect($event)" [checked]="bulkSelect">
+              </th>
+              <th>Items</th>
+              <th>Quantity</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="tbody text-center">
+            <tr *ngFor="let todo of todos">
+              <td><input class="form-check-input shadow-none" type="checkbox" name="isChecked" [checked]="bulkSelect" (change)="onCheck($event, todo)"
+                  [(ngModel)]="todo.checked"></td>
+
+              <td class="">
+                <p *ngIf="todo.isEdit == false" id="label">{{todo.label}}</p>
+                <input type="text" *ngIf="todo.isEdit == true" [(ngModel)]="todo.label" name="label">
+              </td>
+
+              <td>
+                <p *ngIf="todo.isEdit == false">{{todo.quantity}}</p>
+                <input type="number" *ngIf="todo.isEdit == true" [(ngModel)]="todo.quantity" name="quantity"
+                  id="quantity" style="width: fit-content, 8ex;">
+              </td>
+
+              <td>
+                <!-- <button class="btn btn-primary" (click)= "editTodo(todo)" *ngIf="todo.isEdit == false"  >edit</button> -->
+                <!-- <a class="btn btn-primary" routerLink="edit/{{todo.id}}" *ngIf="todo.isEdit == false"  >edit</a> -->
+                <a class="btn btn-primary me-2" routerLink="edit/{{todo.id}}">Edit</a>
+
+                <button
+                  class="btn btn-secondary"
+                  (click)="cancelTodo(todo)"
+                  *ngIf="todo.isEdit == true"
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  (click)="updateTodo(todo)"
+                  *ngIf="todo.isEdit == true"
+                >
+                  Save
+                </button>
+
+                <button
+                  class="btn btn-danger"
+                  (click)="deleteTodo(todo)"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+
+        <input
+          #uploadCsv
+          type="file"
+          (change)="fileChangeListener($event)"
+          class="fileInput"
+          id="file"
+          name="file"
+          accept=".csv"
+        >
+
+        <button
+          class="btn btn-primary shadow-none"
+          type="button"
+          (click)="uploadCsv.click()"
+          style="margin: 5px;"
+        >
+          Import
+        </button>
+
+        <button class="btn btn-primary text-white shadow-none" (click)="exportCsv()">Export</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

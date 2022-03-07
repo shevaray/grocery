@@ -1,0 +1,73 @@
+let menu= [
+    {
+      "text": "BPMS",
+      "i18n": "menu.main.menu",
+      "group": true,
+      "hideInBreadcrumb": true,
+
+      "children": [
+        {
+          "text": "Reporting",
+          "group":"reporting",
+          "i18n": "menu.device.report",
+          "link": "/dashboard/home",
+          "icon": "anticon-file-sync"
+        }
+      ]
+    },
+    {
+      "text": "Admin",
+      "i18n": "menu.admin",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "Devices",
+          "group": true,
+          "i18n": "menu.admin.device",
+          "icon": "anticon-appstore",
+          "children": [
+            {
+              "text": "List",
+              "nav-group":"device",
+              "link": "/device/status",
+              "i18n": "menu.admin.device.list",
+              "icon": "anticon-unordered-list"
+            },
+            {
+              "text": "Cards",
+              "nav-group":"cards",
+              "link": "/device/cards",
+              "i18n": "menu.admin.device.card",
+              "icon": "anticon-idcard"
+            },
+            {
+              "text": "Battery",
+              "nav-group":"battery",
+              "link": "/device/battery",
+              "i18n": "menu.admin.device.battery",
+              "icon": "anticon-thunderbolt"
+            },
+            {
+              "text": "Tracking",
+              "nav-group":"tracking",
+              "link": "/device/tracking",
+              "i18n": "menu.admin.device.track",
+              "icon": "anticon-environment"
+            },
+            {
+              "text": "Logs",
+              "nav-group":"logs",
+              "link": "/device/logs",
+              "i18n": "menu.admin.device.logs",
+              "icon": "anticon-file-search"
+            }
+          ]
+        }
+      ]
+    }
+    ];
+
+    let roles = JSON.parse('{"center":{"create":true,"update":true,"delete":true},"device":{"create":true,"update":true,"delete":true,"import":false,"lock-device":false,"my-devices":true,"company-devices":true,"center-devices":true,"unlock-device":false,"tracking":true,"cmd":false,"command":false,"report-reason":false},"date-flags":{"general":true},"alerts":{"general":true},"cards":{"general":true,"device-relationship":true,"device-count":true,"create":true,"update":true,"delete":true},"battery":{"command":false},"firmware":{"command":false},"logs":{"read":false,"company_center_logs":true},"user_management":{"general":false,"COMPANY_USER":false},"user_device_management":{"VIEW_MY_DEVICES":true},"companies":{"VIEW_ALL_COMPANIES":false,"VIEW_SINGLE":true,"DELETE_COMPANY":false,"UPDATE_COMPANY":true,"ADD_COMPANY":false},"settings":{"all_settings":false}}');
+    let groups  = Object.keys(roles);
+    let tmpMenu = [];
