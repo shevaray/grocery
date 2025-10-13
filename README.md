@@ -1,6 +1,9 @@
 # Grocery app
 
-
+```bash
+Copy code
+ng build.
+```
 
 ## Getting started
 
