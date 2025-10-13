@@ -5,7 +5,7 @@ ng build
 ```
 
 ```bash
-git clone <https://github.com/shevaray/Employee-Suggestion-Management.git>
+git clone https://github.com/shevaray/Employee-Suggestion-Management.git
 cd Employee-Suggestion-Management
 npm install
 ```
